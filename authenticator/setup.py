@@ -19,7 +19,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "wire4-auth"
-VERSION = "1.0.5"
+VERSION = "1.0.6"
 # To install the library, run the following
 #
 # python setup.py install
@@ -27,7 +27,7 @@ VERSION = "1.0.5"
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 
-REQUIRES = ["wire4-client >= 1.0.5", "requests_oauthlib >= 1.3"]
+REQUIRES = ["wire4-client >= 1.0.6", "requests_oauthlib >= 1.3"]
 
 setup(
     name=NAME,

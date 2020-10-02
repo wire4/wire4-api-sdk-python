@@ -8,7 +8,6 @@
 #    in accordance with the company policy.
 
 
-
 """
      <i>Fecha de creación: 6 de diciembre, 2019</i>
 
@@ -29,7 +28,8 @@ from wire4_client import ContactoApi, ContactRequest, CepSearchBanxico, Comproba
     Billing, FacturasApi, WebhookRequest, TransactionOutgoingSpid, TransactionsOutgoingRegister, TransactionOutgoing, \
     EmpresasCoDiApi, PuntosDeVentaCoDiApi, OperacionesCoDiApi, CompanyRequested, CertificateRequest, SalesPointRequest, \
     PeticionesDePagoPorCoDiApi, CodiCodeRequestDTO, CodiOperationsFiltersRequestDTO, ContractsDetailsApi, \
-    ContractDetailRequest, PreMonexAuthorization, UrlsRedirect, AuthorizationTransactionGroup
+    ContractDetailRequest, PreMonexAuthorization, UrlsRedirect, AuthorizationTransactionGroup, LmitesDeMontosApi, \
+    UpdateConfigurationsRequestDTO, ConfigurationsLimits, Item
 from wire4_client.rest import ApiException
 
 from wire4_auth.auth.oauth_wire4 import OAuthWire4
@@ -421,7 +421,7 @@ class TestAccount(unittest.TestCase):
         account: str = "021680064490682994"
         body: AmountRequest = AmountRequest(amount_limit=20000.00, currency_code="MXP",
                                             previous_amount_limit=10000.00, return_url="https://your-app-url.mx/return",
-                                            cancel_return_url="https://your-app-url.mx/cancel",)
+                                            cancel_return_url="https://your-app-url.mx/cancel", )
 
         try:
             response = api_instance.update_amount_limit_account_using_put(body, oauth_token_user, account, subscription)
@@ -819,16 +819,16 @@ class TestAccount(unittest.TestCase):
         # build body with info (check references for more info, types, required fields)
         subscription: str = self.SUBSCRIPTION
         body: TransactionsOutgoingRegister = TransactionsOutgoingRegister(
-                                                                  return_url="https://your-app-url.mx/return",
-                                                                  cancel_return_url="https://your-app-url.mx/cancel",
-                                                                  transactions=[TransactionOutgoing(
-                                                                      order_id="ffdd653a-c250-4b37-be72-b909f480e97b",
-                                                                      amount=1259.69,
-                                                                      beneficiary_account="112680000156896531",
-                                                                      currency_code="MXP",
-                                                                      email=["notificar@wire4.mx"],
-                                                                      reference=1234567,
-                                                                      concept="Transfer out test 1")])
+            return_url="https://your-app-url.mx/return",
+            cancel_return_url="https://your-app-url.mx/cancel",
+            transactions=[TransactionOutgoing(
+                order_id="ffdd653a-c250-4b37-be72-b909f480e97b",
+                amount=1259.69,
+                beneficiary_account="112680000156896531",
+                currency_code="MXP",
+                email=["notificar@wire4.mx"],
+                reference=1234567,
+                concept="Transfer out test 1")])
 
         try:
             response: TokenRequiredResponse = api_instance.register_outgoing_spei_transaction_using_post(
@@ -1103,10 +1103,11 @@ class TestAccount(unittest.TestCase):
         api_instance = CuentasDeBeneficiariosSPEIApi(oauth_wire.get_default_api_client())
 
         try:
-            response: Billing = api_instance.authorize_accounts_pending_put(body=UrlsRedirect(cancel_return_url='https://patito.cafe/cancel/return',
-                                                                                              return_url='https://patito.cafe/return'),
-                                                                            authorization=oauth_token_user,
-                                                                            subscription=self.SUBSCRIPTION)
+            response: Billing = api_instance.authorize_accounts_pending_put(
+                body=UrlsRedirect(cancel_return_url='https://patito.cafe/cancel/return',
+                                  return_url='https://patito.cafe/return'),
+                authorization=oauth_token_user,
+                subscription=self.SUBSCRIPTION)
             print(response)
         except ApiException as ex:
             print("Exception when calling the API %s\n" % ex, file=sys.stderr)
@@ -1135,10 +1136,11 @@ class TestAccount(unittest.TestCase):
         api_instance = TransferenciasSPEIApi(oauth_wire.get_default_api_client())
 
         try:
-            request_body =AuthorizationTransactionGroup(redirect_urls=UrlsRedirect(cancel_return_url='http://patito.cafe/cancel/return',
-                                                                                   return_url='http://patito.cafe/return'),
-                                                        transactions=['dd919bdc-a71c-449d-82ff-5d0535b28984',
-                                                                      'dd919bdc-a71c-449d-82ff-5d0535b28984'])
+            request_body = AuthorizationTransactionGroup(
+                redirect_urls=UrlsRedirect(cancel_return_url='http://patito.cafe/cancel/return',
+                                           return_url='http://patito.cafe/return'),
+                transactions=['dd919bdc-a71c-449d-82ff-5d0535b28984',
+                              'dd919bdc-a71c-449d-82ff-5d0535b28984'])
             response: Billing = api_instance.create_authorization_transactions_group(body=request_body,
                                                                                      authorization=oauth_token_user,
                                                                                      subscription=self.SUBSCRIPTION)
@@ -1165,9 +1167,10 @@ class TestAccount(unittest.TestCase):
 
         try:
             certificate = CertificateRequest("0000010000100002800", "0000010000100002800", 9,
-                               'koadklasjdlajlsldikaa5d4a5sd54a5sda2s1d5asd4a5sx1a5sd41as5d4as56d456g465gh45hjk46uy54h56df456sdf4s56df4s6df4s6d5f2xzc15sdf46sd4a654d2zxc1ds56')
-            companyRequest= CompanyRequested("Servicios especializados Patito Cafe",certificate , "Servicios Patito Cafe",
-                             'MAG041126GT8')
+                                             'koadklasjdlajlsldikaa5d4a5sd54a5sda2s1d5asd4a5sx1a5sd41as5d4as56d456g465gh45hjk46uy54h56df456sdf4s56df4s6df4s6d5f2xzc15sdf46sd4a654d2zxc1ds56')
+            companyRequest = CompanyRequested("Servicios especializados Patito Cafe", certificate,
+                                              "Servicios Patito Cafe",
+                                              'MAG041126GT8')
             response = api_instance.register_company_using_post(companyRequest, oauth_token_app)
             print(response)
         except ApiException as ex:
@@ -1241,7 +1244,7 @@ class TestAccount(unittest.TestCase):
 
         try:
             company_id = '1d49fa2f-40f9-4d0b-8a7b-164df9d2a452'
-            response = api_instance.obtain_sale_points(oauth_token_app,company_id)
+            response = api_instance.obtain_sale_points(oauth_token_app, company_id)
             print(response)
         except ApiException as ex:
             print("Exception when calling the API %s\n" % ex, file=sys.stderr)
@@ -1255,7 +1258,9 @@ class TestAccount(unittest.TestCase):
         oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
         try:
             # Obtain an access token use application flow and scope "codi_admin"
-            oauth_token_app_user: str = oauth_wire.obtain_access_token_app_user(self.SALES_POINT_USER_KEY, self.SALES_POINT_USER_SECRET, 'codi_admin')
+            oauth_token_app_user: str = oauth_wire.obtain_access_token_app_user(self.SALES_POINT_USER_KEY,
+                                                                                self.SALES_POINT_USER_SECRET,
+                                                                                'codi_admin')
         except ApiException as ex:
             print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
             # Optional manage exception in access token flow
@@ -1264,9 +1269,10 @@ class TestAccount(unittest.TestCase):
 
         try:
 
-            body = CodiCodeRequestDTO(amount=6500.00, concept='Pago de servicios mes anterior', due_date='2020-08-29T15:45:00',
+            body = CodiCodeRequestDTO(amount=6500.00, concept='Pago de servicios mes anterior',
+                                      due_date='2020-08-29T15:45:00',
                                       order_id='order_num_12AA', phone_number='5500000001', type='PUSH_NOTIFICATION')
-            response = api_instance.generate_codi_code_qr(body,oauth_token_app_user,self.SALES_POINT_ID)
+            response = api_instance.generate_codi_code_qr(body, oauth_token_app_user, self.SALES_POINT_ID)
             print(response)
         except ApiException as ex:
             print("Exception when calling the API %s\n" % ex, file=sys.stderr)
@@ -1291,7 +1297,8 @@ class TestAccount(unittest.TestCase):
 
         try:
             response = api_instance.consult_codi_request_by_order_id(authorization=oauth_token_app_user,
-                                                                     order_id='order_num_12AA',sales_point_id=self.SALES_POINT_ID)
+                                                                     order_id='order_num_12AA',
+                                                                     sales_point_id=self.SALES_POINT_ID)
             print(response)
         except ApiException as ex:
             print("Exception when calling the API %s\n" % ex, file=sys.stderr)
@@ -1390,13 +1397,48 @@ class TestAccount(unittest.TestCase):
         api_instance = ContractsDetailsApi(oauth_wire.get_default_api_client())
 
         try:
-            response = api_instance.obtain_authorized_users(authorization=oauth_token_app,x_access_key='123Fake?',
+            response = api_instance.obtain_authorized_users(authorization=oauth_token_app, x_access_key='123Fake?',
                                                             request_id='4a867c6d-3787-4987-bdd6-8018a97ed87d')
             print(response)
         except ApiException as ex:
             print("Exception when calling the API %s\n" % ex, file=sys.stderr)
             # Optional manage exception in access token flow
             return
+        pass
+
+    def testUpdateConfigurations(self):
+
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use password flow and scope "spei_admin"
+            # The user_key and user_secret belongs to the subscription to delete
+            oauth_token_user: str = oauth_wire.obtain_access_token_app_user(
+                self.USER_KEY, self.SECRET_KEY, "spei_admin")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = LmitesDeMontosApi(oauth_wire.get_default_api_client())
+
+        # build body with info (check references for more info, types, required fields)
+
+        configurations = ConfigurationsLimits(group='LIMIT_BY_TIME', items=[Item(key='BY_AMOUNT', value='15000.00'),
+                                                                            Item(key='BY_OPERATION', value='60')])
+        body = UpdateConfigurationsRequestDTO(configurations=[configurations])
+
+        try:
+            response = api_instance.update_configurations_with_http_info(body, oauth_token_user, self.SUBSCRIPTION)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
         pass
 
 

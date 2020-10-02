@@ -42,6 +42,7 @@ from wire4_client.models.codi_operations_filters_request_dto import CodiOperatio
 from wire4_client.models.company_registered import CompanyRegistered
 from wire4_client.models.company_requested import CompanyRequested
 from wire4_client.models.compay import Compay
+from wire4_client.models.configurations_limits import ConfigurationsLimits
 from wire4_client.models.contact_request import ContactRequest
 from wire4_client.models.contract_detail_request import ContractDetailRequest
 from wire4_client.models.contract_detail_response import ContractDetailResponse
@@ -53,9 +54,11 @@ from wire4_client.models.error_response import ErrorResponse
 from wire4_client.models.get_depositants import GetDepositants
 from wire4_client.models.institution import Institution
 from wire4_client.models.institutions_list import InstitutionsList
+from wire4_client.models.item import Item
 from wire4_client.models.message_account_beneficiary import MessageAccountBeneficiary
 from wire4_client.models.message_cep import MessageCEP
 from wire4_client.models.message_codi_action import MessageCodiAction
+from wire4_client.models.message_configurations_limits import MessageConfigurationsLimits
 from wire4_client.models.message_deposit_received import MessageDepositReceived
 from wire4_client.models.message_institution import MessageInstitution
 from wire4_client.models.message_payment import MessagePayment
@@ -89,6 +92,7 @@ from wire4_client.models.token_required_response import TokenRequiredResponse
 from wire4_client.models.transaction_outgoing import TransactionOutgoing
 from wire4_client.models.transaction_outgoing_spid import TransactionOutgoingSpid
 from wire4_client.models.transactions_outgoing_register import TransactionsOutgoingRegister
+from wire4_client.models.update_configurations_request_dto import UpdateConfigurationsRequestDTO
 from wire4_client.models.urls_redirect import UrlsRedirect
 from wire4_client.models.user_company import UserCompany
 from wire4_client.models.webhook import Webhook

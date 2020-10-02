@@ -1,2 +1,2 @@
-wire4-client >= 1.0.5
+wire4-client >= 1.0.6
 requests_oauthlib >= 1.3
