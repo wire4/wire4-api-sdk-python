@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.spid_beneficiary_response import SpidBeneficiaryResponse  # noqa: E501
+from models.payment_codi import PaymentCODI  # noqa: E501
 from wire4_client.rest import ApiException
 
 
-class TestSpidBeneficiaryResponse(unittest.TestCase):
-    """SpidBeneficiaryResponse unit test stubs"""
+class TestPaymentCODI(unittest.TestCase):
+    """PaymentCODI unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestSpidBeneficiaryResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testSpidBeneficiaryResponse(self):
-        """Test SpidBeneficiaryResponse"""
+    def testPaymentCODI(self):
+        """Test PaymentCODI"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = wire4_client.models.spid_beneficiary_response.SpidBeneficiaryResponse()  # noqa: E501
+        # model = wire4_client.models.payment_codi.PaymentCODI()  # noqa: E501
         pass
 
 

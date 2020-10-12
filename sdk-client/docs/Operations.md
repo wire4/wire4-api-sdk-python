@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **description** | **str** | Descripción de la petición | [optional] 
 **due_date** | **datetime** | Fecha de vencimiento de la petición | [optional] 
 **order_id** | **str** | Order id de la petición | [optional] 
-**payment** | [**Payment**](Payment.md) |  | [optional] 
+**payment** | [**PaymentCODI**](PaymentCODI.md) |  | [optional] 
 **phone_number** | **str** | Numero de telefono | [optional] 
 **sales_point** | [**SalesPoint**](SalesPoint.md) |  | [optional] 
 **status** | **str** | Estatus de la petición | [optional] 
