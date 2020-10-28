@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import wire4_client
-from models.timestamp import Timestamp  # noqa: E501
+from models.detailed_error_response import DetailedErrorResponse  # noqa: E501
 from wire4_client.rest import ApiException
 
 
-class TestTimestamp(unittest.TestCase):
-    """Timestamp unit test stubs"""
+class TestDetailedErrorResponse(unittest.TestCase):
+    """DetailedErrorResponse unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestTimestamp(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testTimestamp(self):
-        """Test Timestamp"""
+    def testDetailedErrorResponse(self):
+        """Test DetailedErrorResponse"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = wire4_client.models.timestamp.Timestamp()  # noqa: E501
+        # model = wire4_client.models.detailed_error_response.DetailedErrorResponse()  # noqa: E501
         pass
 
 

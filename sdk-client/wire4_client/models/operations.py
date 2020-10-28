@@ -15,7 +15,7 @@ import re  # noqa: F401
 
 import six
 from wire4_client.models.compay import Compay  # noqa: F401,E501
-from wire4_client.models.payment import Payment  # noqa: F401,E501
+from wire4_client.models.payment_codi import PaymentCODI  # noqa: F401,E501
 from wire4_client.models.sales_point import SalesPoint  # noqa: F401,E501
 
 
@@ -37,7 +37,7 @@ class Operations(object):
         'description': 'str',
         'due_date': 'datetime',
         'order_id': 'str',
-        'payment': 'Payment',
+        'payment': 'PaymentCODI',
         'phone_number': 'str',
         'sales_point': 'SalesPoint',
         'status': 'str',
@@ -210,7 +210,7 @@ class Operations(object):
 
 
         :return: The payment of this Operations.  # noqa: E501
-        :rtype: Payment
+        :rtype: PaymentCODI
         """
         return self._payment
 
@@ -220,7 +220,7 @@ class Operations(object):
 
 
         :param payment: The payment of this Operations.  # noqa: E501
-        :type: Payment
+        :type: PaymentCODI
         """
 
         self._payment = payment

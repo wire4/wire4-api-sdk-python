@@ -34,7 +34,8 @@ class MessageUserAuthorized(object):
         'masked_name': 'str',
         'masked_user_name': 'str',
         'name': 'str',
-        'request_id': 'str'
+        'request_id': 'str',
+        'user_name': 'str'
     }
 
     attribute_map = {
@@ -43,10 +44,11 @@ class MessageUserAuthorized(object):
         'masked_name': 'masked_name',
         'masked_user_name': 'masked_user_name',
         'name': 'name',
-        'request_id': 'request_id'
+        'request_id': 'request_id',
+        'user_name': 'user_name'
     }
 
-    def __init__(self, account=None, masked_account=None, masked_name=None, masked_user_name=None, name=None, request_id=None):  # noqa: E501
+    def __init__(self, account=None, masked_account=None, masked_name=None, masked_user_name=None, name=None, request_id=None, user_name=None):  # noqa: E501
         """MessageUserAuthorized - a model defined in Swagger"""  # noqa: E501
         self._account = None
         self._masked_account = None
@@ -54,6 +56,7 @@ class MessageUserAuthorized(object):
         self._masked_user_name = None
         self._name = None
         self._request_id = None
+        self._user_name = None
         self.discriminator = None
         if account is not None:
             self.account = account
@@ -67,6 +70,8 @@ class MessageUserAuthorized(object):
             self.name = name
         if request_id is not None:
             self.request_id = request_id
+        if user_name is not None:
+            self.user_name = user_name
 
     @property
     def account(self):
@@ -205,6 +210,29 @@ class MessageUserAuthorized(object):
         """
 
         self._request_id = request_id
+
+    @property
+    def user_name(self):
+        """Gets the user_name of this MessageUserAuthorized.  # noqa: E501
+
+        El nombre del usuario de acceso que se autorizó  # noqa: E501
+
+        :return: The user_name of this MessageUserAuthorized.  # noqa: E501
+        :rtype: str
+        """
+        return self._user_name
+
+    @user_name.setter
+    def user_name(self, user_name):
+        """Sets the user_name of this MessageUserAuthorized.
+
+        El nombre del usuario de acceso que se autorizó  # noqa: E501
+
+        :param user_name: The user_name of this MessageUserAuthorized.  # noqa: E501
+        :type: str
+        """
+
+        self._user_name = user_name
 
     def to_dict(self):
         """Returns the model properties as a dict"""

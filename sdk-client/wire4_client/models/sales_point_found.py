@@ -14,7 +14,6 @@ import pprint
 import re  # noqa: F401
 
 import six
-from wire4_client.models.timestamp import Timestamp  # noqa: F401,E501
 
 
 class SalesPointFound(object):
@@ -32,11 +31,11 @@ class SalesPointFound(object):
     swagger_types = {
         'access_ip': 'str',
         'account': 'str',
-        'created_at': 'Timestamp',
+        'created_at': 'datetime',
         'name': 'str',
         'public_id': 'str',
         'status': 'str',
-        'updated_at': 'Timestamp'
+        'updated_at': 'datetime'
     }
 
     attribute_map = {
@@ -124,9 +123,10 @@ class SalesPointFound(object):
     def created_at(self):
         """Gets the created_at of this SalesPointFound.  # noqa: E501
 
+        Fecha en la que se creó el punto de venta  # noqa: E501
 
         :return: The created_at of this SalesPointFound.  # noqa: E501
-        :rtype: Timestamp
+        :rtype: datetime
         """
         return self._created_at
 
@@ -134,9 +134,10 @@ class SalesPointFound(object):
     def created_at(self, created_at):
         """Sets the created_at of this SalesPointFound.
 
+        Fecha en la que se creó el punto de venta  # noqa: E501
 
         :param created_at: The created_at of this SalesPointFound.  # noqa: E501
-        :type: Timestamp
+        :type: datetime
         """
 
         self._created_at = created_at
@@ -220,9 +221,10 @@ class SalesPointFound(object):
     def updated_at(self):
         """Gets the updated_at of this SalesPointFound.  # noqa: E501
 
+        Fecha en la que se actualizó el punto de venta  # noqa: E501
 
         :return: The updated_at of this SalesPointFound.  # noqa: E501
-        :rtype: Timestamp
+        :rtype: datetime
         """
         return self._updated_at
 
@@ -230,9 +232,10 @@ class SalesPointFound(object):
     def updated_at(self, updated_at):
         """Sets the updated_at of this SalesPointFound.
 
+        Fecha en la que se actualizó el punto de venta  # noqa: E501
 
         :param updated_at: The updated_at of this SalesPointFound.  # noqa: E501
-        :type: Timestamp
+        :type: datetime
         """
 
         self._updated_at = updated_at

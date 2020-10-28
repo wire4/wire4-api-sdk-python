@@ -822,9 +822,9 @@ class CuentasDeBeneficiariosSPEIApi(object):
             collection_formats=collection_formats)
 
     def update_amount_limit_account_using_put(self, body, authorization, account, subscription, **kwargs):  # noqa: E501
-        """Actualiza el monto límite  # noqa: E501
+        """Solicitud para actualizar el monto límite  # noqa: E501
 
-        Actualiza el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.  # noqa: E501
+        Inicia una solicitud para actualizar el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_amount_limit_account_using_put(body, authorization, account, subscription, async_req=True)
@@ -847,9 +847,9 @@ class CuentasDeBeneficiariosSPEIApi(object):
             return data
 
     def update_amount_limit_account_using_put_with_http_info(self, body, authorization, account, subscription, **kwargs):  # noqa: E501
-        """Actualiza el monto límite  # noqa: E501
+        """Solicitud para actualizar el monto límite  # noqa: E501
 
-        Actualiza el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.  # noqa: E501
+        Inicia una solicitud para actualizar el monto límite a la cuenta de beneficiario proporcionada relacionada al contrato perteneciente a la subscripción.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_amount_limit_account_using_put_with_http_info(body, authorization, account, subscription, async_req=True)

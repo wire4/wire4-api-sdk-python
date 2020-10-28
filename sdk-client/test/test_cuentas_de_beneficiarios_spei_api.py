@@ -80,7 +80,7 @@ class TestCuentasDeBeneficiariosSPEIApi(unittest.TestCase):
     def test_update_amount_limit_account_using_put(self):
         """Test case for update_amount_limit_account_using_put
 
-        Actualiza el monto límite  # noqa: E501
+        Solicitud para actualizar el monto límite  # noqa: E501
         """
         pass
 

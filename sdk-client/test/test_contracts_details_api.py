@@ -42,6 +42,13 @@ class TestContractsDetailsApi(unittest.TestCase):
         """
         pass
 
+    def test_obtain_authorized_users_by_contract(self):
+        """Test case for obtain_authorized_users_by_contract
+
+        Obtiene los usuarios autorizados por contrato  # noqa: E501
+        """
+        pass
+
     def test_obtain_contract_details(self):
         """Test case for obtain_contract_details
 

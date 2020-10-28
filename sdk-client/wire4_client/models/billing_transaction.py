@@ -14,7 +14,6 @@ import pprint
 import re  # noqa: F401
 
 import six
-from wire4_client.models.timestamp import Timestamp  # noqa: F401,E501
 
 
 class BillingTransaction(object):
@@ -33,7 +32,7 @@ class BillingTransaction(object):
         'amount': 'float',
         'clave_rastreo': 'str',
         'monex_id': 'int',
-        'operation_date': 'Timestamp',
+        'operation_date': 'datetime',
         'order_id': 'str',
         'payment_order_id': 'str',
         'transaction_id': 'int',
@@ -152,9 +151,10 @@ class BillingTransaction(object):
     def operation_date(self):
         """Gets the operation_date of this BillingTransaction.  # noqa: E501
 
+        Fecha y hora de la transacción  # noqa: E501
 
         :return: The operation_date of this BillingTransaction.  # noqa: E501
-        :rtype: Timestamp
+        :rtype: datetime
         """
         return self._operation_date
 
@@ -162,9 +162,10 @@ class BillingTransaction(object):
     def operation_date(self, operation_date):
         """Sets the operation_date of this BillingTransaction.
 
+        Fecha y hora de la transacción  # noqa: E501
 
         :param operation_date: The operation_date of this BillingTransaction.  # noqa: E501
-        :type: Timestamp
+        :type: datetime
         """
 
         self._operation_date = operation_date

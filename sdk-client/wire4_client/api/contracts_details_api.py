@@ -250,6 +250,113 @@ class ContractsDetailsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def obtain_authorized_users_by_contract(self, authorization, x_access_key, **kwargs):  # noqa: E501
+        """Obtiene los usuarios autorizados por contrato  # noqa: E501
+
+        Obtienen los detalles de los usuarios autorizados por contrato Monex.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.obtain_authorized_users_by_contract(authorization, x_access_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: Header para token (required)
+        :param str x_access_key: La llave de acceso de la aplicación (required)
+        :param str contract: El contrato Monex
+        :return: list[AuthorizedUsers]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.obtain_authorized_users_by_contract_with_http_info(authorization, x_access_key, **kwargs)  # noqa: E501
+        else:
+            (data) = self.obtain_authorized_users_by_contract_with_http_info(authorization, x_access_key, **kwargs)  # noqa: E501
+            return data
+
+    def obtain_authorized_users_by_contract_with_http_info(self, authorization, x_access_key, **kwargs):  # noqa: E501
+        """Obtiene los usuarios autorizados por contrato  # noqa: E501
+
+        Obtienen los detalles de los usuarios autorizados por contrato Monex.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.obtain_authorized_users_by_contract_with_http_info(authorization, x_access_key, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: Header para token (required)
+        :param str x_access_key: La llave de acceso de la aplicación (required)
+        :param str contract: El contrato Monex
+        :return: list[AuthorizedUsers]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'x_access_key', 'contract']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method obtain_authorized_users_by_contract" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `obtain_authorized_users_by_contract`")  # noqa: E501
+        # verify the required parameter 'x_access_key' is set
+        if ('x_access_key' not in params or
+                params['x_access_key'] is None):
+            raise ValueError("Missing the required parameter `x_access_key` when calling `obtain_authorized_users_by_contract`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'contract' in params:
+            query_params.append(('contract', params['contract']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+        if 'x_access_key' in params:
+            header_params['X-ACCESS-KEY'] = params['x_access_key']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/onboarding/accounts/authorized-users', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[AuthorizedUsers]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def obtain_contract_details(self, body, authorization, x_access_key, **kwargs):  # noqa: E501
         """Obtiene los detalles de la empresa del contrato  # noqa: E501
 

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_authorization**](ContractsDetailsApi.md#create_authorization) | **POST** /onboarding/accounts/authorize | Devuelve la URL para autorización del usuario Monex
 [**obtain_authorized_users**](ContractsDetailsApi.md#obtain_authorized_users) | **GET** /onboarding/accounts/{requestId}/authorized-users | Obtiene los usuarios autorizados
+[**obtain_authorized_users_by_contract**](ContractsDetailsApi.md#obtain_authorized_users_by_contract) | **GET** /onboarding/accounts/authorized-users | Obtiene los usuarios autorizados por contrato
 [**obtain_contract_details**](ContractsDetailsApi.md#obtain_contract_details) | **POST** /onboarding/accounts/details | Obtiene los detalles de la empresa del contrato
 
 # **create_authorization**
@@ -94,6 +95,58 @@ Name | Type | Description  | Notes
  **authorization** | **str**| Header para token | 
  **x_access_key** | **str**| La llave de acceso de la aplicación | 
  **request_id** | **str**| El identificador de la petición a esta API | 
+
+### Return type
+
+[**list[AuthorizedUsers]**](AuthorizedUsers.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **obtain_authorized_users_by_contract**
+> list[AuthorizedUsers] obtain_authorized_users_by_contract(authorization, x_access_key, contract=contract)
+
+Obtiene los usuarios autorizados por contrato
+
+Obtienen los detalles de los usuarios autorizados por contrato Monex.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import wire4_client
+from wire4_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = wire4_client.ContractsDetailsApi()
+authorization = 'authorization_example' # str | Header para token
+x_access_key = 'x_access_key_example' # str | La llave de acceso de la aplicación
+contract = 'contract_example' # str | El contrato Monex (optional)
+
+try:
+    # Obtiene los usuarios autorizados por contrato
+    api_response = api_instance.obtain_authorized_users_by_contract(authorization, x_access_key, contract=contract)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ContractsDetailsApi->obtain_authorized_users_by_contract: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Header para token | 
+ **x_access_key** | **str**| La llave de acceso de la aplicación | 
+ **contract** | **str**| El contrato Monex | [optional] 
 
 ### Return type
 
