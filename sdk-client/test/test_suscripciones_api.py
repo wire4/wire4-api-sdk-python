@@ -28,6 +28,13 @@ class TestSuscripcionesApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_change_subscription_status_using_put(self):
+        """Test case for change_subscription_status_using_put
+
+        Cambia el estatus de la suscripción  # noqa: E501
+        """
+        pass
+
     def test_pre_enrollment_monex_user_using_post(self):
         """Test case for pre_enrollment_monex_user_using_post
 

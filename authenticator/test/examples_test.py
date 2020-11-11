@@ -29,7 +29,7 @@ from wire4_client import ContactoApi, ContactRequest, CepSearchBanxico, Comproba
     Billing, FacturasApi, WebhookRequest, TransactionOutgoingSpid, TransactionsOutgoingRegister, TransactionOutgoing, \
     EmpresasCoDiApi, PuntosDeVentaCoDiApi, OperacionesCoDiApi, CompanyRequested, CertificateRequest, SalesPointRequest, \
     PeticionesDePagoPorCoDiApi, CodiCodeRequestDTO, CodiOperationsFiltersRequestDTO, ContractsDetailsApi, \
-    ContractDetailRequest, PreMonexAuthorization, UrlsRedirect, AuthorizationTransactionGroup
+    ContractDetailRequest, PreMonexAuthorization, UrlsRedirect, AuthorizationTransactionGroup, SubscriptionChangeStatusRequest
 from wire4_client.rest import ApiException
 
 from wire4_auth.auth.oauth_wire4 import OAuthWire4
@@ -1397,6 +1397,35 @@ class TestAccount(unittest.TestCase):
             print("Exception when calling the API %s\n" % ex, file=sys.stderr)
             # Optional manage exception in access token flow
             return
+        pass
+
+    def testChangeSubscriptionStatus(self):
+        # Create the authenticator to obtain access token
+        # The token URL and Service URL are defined for this environment enum value.
+        oauth_wire = OAuthWire4(self.CLIENT_ID, self.CLIENT_SECRET, self.AMBIENT)
+
+        try:
+            # Obtain an access token use application flow and scope "general"
+            oauth_token_app: str = oauth_wire.obtain_access_token_app("general")
+        except ApiException as ex:
+            print("Exception to obtain access token %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
+        # create an instance of the API class and add the bearer token to request
+        api_instance = SuscripcionesApi(oauth_wire.get_default_api_client())
+
+        # build body with info (check references for more info: types, required fields, etc.)
+        body = SubscriptionChangeStatusRequest(status="INACTIVE")
+
+        try:
+            response: CepResponse = api_instance.change_subscription_status_using_put_with_http_info(body, oauth_token_app,self.SUBSCRIPTION)
+            print(response)
+        except ApiException as ex:
+            print("Exception when calling the API %s\n" % ex, file=sys.stderr)
+            # Optional manage exception in access token flow
+            return
+
         pass
 
 

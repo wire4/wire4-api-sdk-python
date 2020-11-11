@@ -30,21 +30,26 @@ class Item(object):
     """
     swagger_types = {
         'key': 'str',
+        'type': 'str',
         'value': 'str'
     }
 
     attribute_map = {
         'key': 'key',
+        'type': 'type',
         'value': 'value'
     }
 
-    def __init__(self, key=None, value=None):  # noqa: E501
+    def __init__(self, key=None, type=None, value=None):  # noqa: E501
         """Item - a model defined in Swagger"""  # noqa: E501
         self._key = None
+        self._type = None
         self._value = None
         self.discriminator = None
         if key is not None:
             self.key = key
+        if type is not None:
+            self.type = type
         if value is not None:
             self.value = value
 
@@ -70,6 +75,29 @@ class Item(object):
         """
 
         self._key = key
+
+    @property
+    def type(self):
+        """Gets the type of this Item.  # noqa: E501
+
+        El tipo de dato del grupo de configuraciones.  # noqa: E501
+
+        :return: The type of this Item.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this Item.
+
+        El tipo de dato del grupo de configuraciones.  # noqa: E501
+
+        :param type: The type of this Item.  # noqa: E501
+        :type: str
+        """
+
+        self._type = type
 
     @property
     def value(self):
