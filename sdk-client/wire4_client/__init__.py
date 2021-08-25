@@ -16,6 +16,7 @@ from __future__ import absolute_import
 
 # import apis into sdk package
 from wire4_client.api.autorizacin_de_depsitos_api import AutorizacinDeDepsitosApi
+from wire4_client.api.cargos_recurrentes_api import CargosRecurrentesApi
 from wire4_client.api.comprobante_electrnico_de_pago__cep_api import ComprobanteElectrnicoDePagoCEPApi
 from wire4_client.api.contacto_api import ContactoApi
 from wire4_client.api.contracts_details_api import ContractsDetailsApi
@@ -67,9 +68,11 @@ from wire4_client.models.company_registered import CompanyRegistered
 from wire4_client.models.company_requested import CompanyRequested
 from wire4_client.models.compay import Compay
 from wire4_client.models.configurations_limits import ConfigurationsLimits
+from wire4_client.models.confirm_recurring_charge import ConfirmRecurringCharge
 from wire4_client.models.contact_request import ContactRequest
 from wire4_client.models.contract_detail_request import ContractDetailRequest
 from wire4_client.models.contract_detail_response import ContractDetailResponse
+from wire4_client.models.customer import Customer
 from wire4_client.models.deposit import Deposit
 from wire4_client.models.deposit_authorization_request import DepositAuthorizationRequest
 from wire4_client.models.depositant import Depositant
@@ -106,6 +109,8 @@ from wire4_client.models.person import Person
 from wire4_client.models.pre_enrollment_data import PreEnrollmentData
 from wire4_client.models.pre_enrollment_response import PreEnrollmentResponse
 from wire4_client.models.pre_monex_authorization import PreMonexAuthorization
+from wire4_client.models.product import Product
+from wire4_client.models.recurring_charge_request import RecurringChargeRequest
 from wire4_client.models.relationship import Relationship
 from wire4_client.models.relationships_response import RelationshipsResponse
 from wire4_client.models.sales_point import SalesPoint

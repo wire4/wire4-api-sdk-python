@@ -33,6 +33,7 @@ class AccountReassigned(object):
     """
     swagger_types = {
         'amount_limit': 'float',
+        'authorization_date': 'datetime',
         'bank': 'Institution',
         'beneficiary_account': 'str',
         'currency_code': 'str',
@@ -50,6 +51,7 @@ class AccountReassigned(object):
 
     attribute_map = {
         'amount_limit': 'amount_limit',
+        'authorization_date': 'authorization_date',
         'bank': 'bank',
         'beneficiary_account': 'beneficiary_account',
         'currency_code': 'currency_code',
@@ -65,9 +67,10 @@ class AccountReassigned(object):
         'status': 'status'
     }
 
-    def __init__(self, amount_limit=None, bank=None, beneficiary_account=None, currency_code=None, email=None, institution=None, kind_of_relationship=None, numeric_reference_spei=None, payment_concept_spei=None, person=None, register_date=None, relationship=None, rfc=None, status=None):  # noqa: E501
+    def __init__(self, amount_limit=None, authorization_date=None, bank=None, beneficiary_account=None, currency_code=None, email=None, institution=None, kind_of_relationship=None, numeric_reference_spei=None, payment_concept_spei=None, person=None, register_date=None, relationship=None, rfc=None, status=None):  # noqa: E501
         """AccountReassigned - a model defined in Swagger"""  # noqa: E501
         self._amount_limit = None
+        self._authorization_date = None
         self._bank = None
         self._beneficiary_account = None
         self._currency_code = None
@@ -83,6 +86,8 @@ class AccountReassigned(object):
         self._status = None
         self.discriminator = None
         self.amount_limit = amount_limit
+        if authorization_date is not None:
+            self.authorization_date = authorization_date
         if bank is not None:
             self.bank = bank
         self.beneficiary_account = beneficiary_account
@@ -130,6 +135,29 @@ class AccountReassigned(object):
             raise ValueError("Invalid value for `amount_limit`, must not be `None`")  # noqa: E501
 
         self._amount_limit = amount_limit
+
+    @property
+    def authorization_date(self):
+        """Gets the authorization_date of this AccountReassigned.  # noqa: E501
+
+        Es la fecha en la que se autorizó el registro del beneficiario. Ésta fecha viene en formato ISO 8601 con zona horaria, ejemplo: <strong>2020-10-27T11:03:15.000-06:00</strong>.  # noqa: E501
+
+        :return: The authorization_date of this AccountReassigned.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._authorization_date
+
+    @authorization_date.setter
+    def authorization_date(self, authorization_date):
+        """Sets the authorization_date of this AccountReassigned.
+
+        Es la fecha en la que se autorizó el registro del beneficiario. Ésta fecha viene en formato ISO 8601 con zona horaria, ejemplo: <strong>2020-10-27T11:03:15.000-06:00</strong>.  # noqa: E501
+
+        :param authorization_date: The authorization_date of this AccountReassigned.  # noqa: E501
+        :type: datetime
+        """
+
+        self._authorization_date = authorization_date
 
     @property
     def bank(self):

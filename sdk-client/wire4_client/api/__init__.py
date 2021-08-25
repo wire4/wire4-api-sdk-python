@@ -4,6 +4,7 @@ from __future__ import absolute_import
 
 # import apis into api package
 from wire4_client.api.autorizacin_de_depsitos_api import AutorizacinDeDepsitosApi
+from wire4_client.api.cargos_recurrentes_api import CargosRecurrentesApi
 from wire4_client.api.comprobante_electrnico_de_pago__cep_api import ComprobanteElectrnicoDePagoCEPApi
 from wire4_client.api.contacto_api import ContactoApi
 from wire4_client.api.contracts_details_api import ContractsDetailsApi

@@ -32,6 +32,7 @@ class SpidBeneficiaryResponse(object):
     """
     swagger_types = {
         'amount_limit': 'float',
+        'authorization_date': 'datetime',
         'bank': 'Institution',
         'beneficiary_account': 'str',
         'email': 'list[str]',
@@ -47,6 +48,7 @@ class SpidBeneficiaryResponse(object):
 
     attribute_map = {
         'amount_limit': 'amount_limit',
+        'authorization_date': 'authorization_date',
         'bank': 'bank',
         'beneficiary_account': 'beneficiary_account',
         'email': 'email',
@@ -60,9 +62,10 @@ class SpidBeneficiaryResponse(object):
         'status': 'status'
     }
 
-    def __init__(self, amount_limit=None, bank=None, beneficiary_account=None, email=None, institution=None, kind_of_relationship=None, numeric_reference_spid=None, payment_concept_spid=None, register_date=None, relationship=None, rfc=None, status=None):  # noqa: E501
+    def __init__(self, amount_limit=None, authorization_date=None, bank=None, beneficiary_account=None, email=None, institution=None, kind_of_relationship=None, numeric_reference_spid=None, payment_concept_spid=None, register_date=None, relationship=None, rfc=None, status=None):  # noqa: E501
         """SpidBeneficiaryResponse - a model defined in Swagger"""  # noqa: E501
         self._amount_limit = None
+        self._authorization_date = None
         self._bank = None
         self._beneficiary_account = None
         self._email = None
@@ -76,6 +79,8 @@ class SpidBeneficiaryResponse(object):
         self._status = None
         self.discriminator = None
         self.amount_limit = amount_limit
+        if authorization_date is not None:
+            self.authorization_date = authorization_date
         if bank is not None:
             self.bank = bank
         self.beneficiary_account = beneficiary_account
@@ -119,6 +124,29 @@ class SpidBeneficiaryResponse(object):
             raise ValueError("Invalid value for `amount_limit`, must not be `None`")  # noqa: E501
 
         self._amount_limit = amount_limit
+
+    @property
+    def authorization_date(self):
+        """Gets the authorization_date of this SpidBeneficiaryResponse.  # noqa: E501
+
+        La fecha en la que se registro el beneficiario.  # noqa: E501
+
+        :return: The authorization_date of this SpidBeneficiaryResponse.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._authorization_date
+
+    @authorization_date.setter
+    def authorization_date(self, authorization_date):
+        """Sets the authorization_date of this SpidBeneficiaryResponse.
+
+        La fecha en la que se registro el beneficiario.  # noqa: E501
+
+        :param authorization_date: The authorization_date of this SpidBeneficiaryResponse.  # noqa: E501
+        :type: datetime
+        """
+
+        self._authorization_date = authorization_date
 
     @property
     def bank(self):
